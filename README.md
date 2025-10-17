@@ -11,18 +11,24 @@
 - **Wybór plików** - możliwość wyboru plików do kompresji
 - **Wybór folderu docelowego** - określenie miejsca zapisu
 - **Obsługa zdarzeń** - reakcja na kliknięcia i zamknięcie okna
-
-### 🚧 W trakcie rozwoju
-- **Kompresja plików tekstowych** - algorytm kompresji
+- **Kompresja plików** - prawdziwa kompresja do formatu ZIP
 - **Walidacja plików** - sprawdzanie poprawności danych
 - **Komunikaty o postępie** - informowanie użytkownika o statusie
 - **Obsługa błędów** - graceful handling wyjątków
+- **Ustawienia kompresji** - wybór poziomu kompresji (1-9)
+- **Statystyki operacji** - okno ze statystykami
+- **Wyniki kompresji** - szczegółowe raporty
 
-### 🔮 Planowane
+### 🚧 W trakcie rozwoju
 - **Różne formaty plików** - rozszerzenie poza pliki tekstowe
-- **Ustawienia kompresji** - wybór poziomu kompresji
 - **Historia operacji** - logowanie wykonanych kompresji
 - **Batch processing** - kompresja wielu plików jednocześnie
+
+### 🔮 Planowane
+- **Wielowątkowa kompresja** - równoległa kompresja dużych plików
+- **Integracja z chmurą** - bezpośrednie zapisywanie do chmury
+- **API dla innych aplikacji** - możliwość integracji
+- **Wersja webowa** - aplikacja w przeglądarce
 
 ## 🛠️ Technologie
 
@@ -34,14 +40,17 @@
 
 ```
 SqueezeIt-vibe/
-├── main.py              # Główny plik aplikacji
-├── gui.py               # Moduł interfejsu użytkownika (planowany)
-├── core.py              # Logika kompresji (planowany)
-├── utils.py             # Funkcje pomocnicze (planowany)
-├── KURS.md              # Kurs Python od podstaw
-├── ĆWICZENIA.md         # Zadania do wykonania
-├── README.md            # Dokumentacja projektu
-└── docs/                # Dodatkowa dokumentacja
+├── main.py              # ✅ Główny plik aplikacji
+├── gui.py               # ✅ Moduł interfejsu użytkownika
+├── core.py              # ✅ Logika kompresji plików
+├── utils.py             # ✅ Funkcje pomocnicze
+├── README.md            # ✅ Dokumentacja projektu
+├── pyproject.toml       # ✅ Konfiguracja projektu
+├── .gitignore           # ✅ Pliki ignorowane przez Git
+└── docs/                # ✅ Dokumentacja edukacyjna
+    ├── KURS.md          # ✅ Kurs Python od podstaw
+    ├── ĆWICZENIA.md     # ✅ Zadania do wykonania
+    └── PRD.md           # ✅ Dokument wymagań produktu
 ```
 
 ## 🚀 Instalacja i uruchomienie
@@ -73,15 +82,18 @@ python main.py
 ## 🎓 Materiały edukacyjne
 
 ### Kurs Python
-- **KURS.md** - kompletny kurs Python od podstaw
-- **ĆWICZENIA.md** - praktyczne zadania do wykonania
+- **`docs/KURS.md`** - kompletny kurs Python od podstaw z przykładami z SqueezeIt
+- **`docs/ĆWICZENIA.md`** - praktyczne zadania do wykonania (4 poziomy trudności)
+- **`docs/PRD.md`** - dokument wymagań produktu (Product Requirements Document)
 
 ### Kluczowe koncepcje w projekcie
-- **GUI Programming** - tworzenie interfejsów użytkownika
-- **Event Handling** - obsługa zdarzeń (kliknięcia, zamknięcie)
-- **File I/O** - praca z plikami i folderami
-- **Error Handling** - obsługa błędów i wyjątków
-- **Code Organization** - organizacja kodu w moduły
+- **GUI Programming** - tworzenie interfejsów użytkownika z FreeSimpleGUI
+- **Event Handling** - obsługa zdarzeń (kliknięcia, zamknięcie, slider)
+- **File I/O** - praca z plikami i folderami (zipfile, os.path)
+- **Error Handling** - obsługa błędów i wyjątków (try/except/finally)
+- **Code Organization** - organizacja kodu w moduły (main.py, gui.py, core.py, utils.py)
+- **Object-Oriented Programming** - klasy i obiekty (KompresorPlikow, SqueezeItGUI)
+- **Type Hints** - adnotacje typów dla lepszej czytelności kodu
 
 ## 🔧 Rozwój projektu
 

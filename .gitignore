@@ -23,3 +23,14 @@
 .coverage.yml
 .coverage.html
 .coverage.lcov
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyw
+*.pyz
+*.pywz
+*.pyzw
+*.pyz
+*.pywz
+*.pyzw

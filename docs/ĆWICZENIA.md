@@ -153,21 +153,20 @@ else:
 
 ```python
 # Zadanie: Stwórz prosty kompresor tekstu
-import gzip
+import zipfile
 import os
 
 def kompresuj_plik(sciezka_wejscie, sciezka_wyjscie):
     """Kompresuje plik tekstowy"""
     try:
-        with open(sciezka_wejscie, 'rb') as plik_wejscie:
-            with gzip.open(sciezka_wyjscie, 'wb') as plik_wyjscie:
-                plik_wyjscie.write(plik_wejscie.read())
+        with zipfile.ZipFile(sciezka_wyjscie, 'w', zipfile.ZIP_DEFLATED) as zipf:
+            zipf.write(sciezka_wejscie, os.path.basename(sciezka_wejscie))
         return True, "Kompresja zakończona pomyślnie"
     except Exception as e:
         return False, f"Błąd kompresji: {e}"
 
 # Przetestuj kompresję
-sukces, komunikat = kompresuj_plik("test.txt", "test.txt.gz")
+sukces, komunikat = kompresuj_plik("test.txt", "test.zip")
 print(komunikat)
 ```
 
@@ -175,26 +174,24 @@ print(komunikat)
 **Cel:** Rozszerzenie interfejsu użytkownika
 
 ```python
-# Zadanie: Dodaj nowe elementy do GUI
+# Zadanie: Stwórz prosty GUI
 import FreeSimpleGUI as sg
 
-def stworz_rozszerzone_gui():
-    """Tworzy rozszerzony interfejs użytkownika"""
+def stworz_proste_gui():
+    """Tworzy prosty interfejs użytkownika"""
     layout = [
         [sg.Text("SqueezeIt - Kompresor Plików", font=("Arial", 16))],
-        [sg.Text("Pliki do kompresji:")],
-        [sg.Input(key="pliki"), sg.FileBrowse("Wybierz pliki")],
+        [sg.Text("Plik do kompresji:")],
+        [sg.Input(key="plik"), sg.FileBrowse("Wybierz plik")],
         [sg.Text("Folder docelowy:")],
         [sg.Input(key="folder"), sg.FolderBrowse("Wybierz folder")],
-        [sg.Text("Poziom kompresji:")],
-        [sg.Slider(range=(1, 9), default_value=6, orientation='h', key="poziom")],
         [sg.Button("Kompresuj"), sg.Button("Anuluj")],
         [sg.Output(size=(50, 10), key="output")]
     ]
     return sg.Window("SqueezeIt", layout)
 
 # Użyj funkcji
-window = stworz_rozszerzone_gui()
+window = stworz_proste_gui()
 ```
 
 ### Ćwiczenie 3.3: Logowanie i monitoring
@@ -341,6 +338,49 @@ if __name__ == '__main__':
 - **Stack Overflow** - pytania i odpowiedzi
 - **Real Python** - tutoriale i artykuły
 - **Python Tutor** - wizualizacja kodu
+
+---
+
+## 🔧 Praktyczne projekty do wykonania
+
+### Projekt 1: Prosty kalkulator
+```python
+# Stwórz kalkulator z GUI
+def kalkulator():
+    layout = [
+        [sg.Text("Kalkulator", font=("Arial", 16))],
+        [sg.Input(key="wynik", size=(20, 1))],
+        [sg.Button("1"), sg.Button("2"), sg.Button("3"), sg.Button("+")],
+        [sg.Button("4"), sg.Button("5"), sg.Button("6"), sg.Button("-")],
+        [sg.Button("7"), sg.Button("8"), sg.Button("9"), sg.Button("*")],
+        [sg.Button("0"), sg.Button("="), sg.Button("C"), sg.Button("/")]
+    ]
+    # Implementuj logikę kalkulatora...
+```
+
+### Projekt 2: Menedżer plików
+```python
+# Stwórz prosty menedżer plików
+def menedzer_plikow():
+    layout = [
+        [sg.Text("Menedżer Plików")],
+        [sg.Listbox(values=[], size=(40, 10), key="lista_plikow")],
+        [sg.Button("Odśwież"), sg.Button("Usuń"), sg.Button("Kopiuj")]
+    ]
+    # Implementuj funkcjonalność...
+```
+
+### Projekt 3: Notatnik
+```python
+# Stwórz prosty notatnik
+def notatnik():
+    layout = [
+        [sg.Text("Notatnik")],
+        [sg.Multiline(size=(50, 20), key="tekst")],
+        [sg.Button("Zapisz"), sg.Button("Otwórz"), sg.Button("Nowy")]
+    ]
+    # Implementuj funkcjonalność...
+```
 
 ---
 

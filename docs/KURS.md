@@ -1,4 +1,4 @@
-# 🐍 Kurs Python od Podstaw
+# 🐍 Kurs Python od Podstaw - SqueezeIt Edition
 
 ## Spis treści
 1. [Wprowadzenie do Pythona](#wprowadzenie-do-pythona)
@@ -9,6 +9,8 @@
 6. [Klasy i obiekty](#klasy-i-obiekty)
 7. [Obsługa plików](#obsługa-plików)
 8. [Biblioteki i moduły](#biblioteki-i-moduły)
+9. [GUI z FreeSimpleGUI](#gui-z-freesimplegui)
+10. [Praktyczne przykłady z SqueezeIt](#praktyczne-przykłady-z-squeezeit)
 
 ---
 
@@ -316,25 +318,141 @@ print(formatuj_date(dzisiaj))  # 15.12.2024
 
 ---
 
+## GUI z FreeSimpleGUI
+
+### Podstawy FreeSimpleGUI
+```python
+import FreeSimpleGUI as sg
+
+# Tworzenie elementów GUI
+layout = [
+    [sg.Text("Witaj w aplikacji!")],
+    [sg.Input(key="input_tekst")],
+    [sg.Button("OK"), sg.Button("Anuluj")]
+]
+
+# Tworzenie okna
+window = sg.Window("Moja aplikacja", layout)
+
+# Pętla zdarzeń
+while True:
+    event, values = window.read()
+    if event == sg.WIN_CLOSED:
+        break
+    if event == "OK":
+        print(f"Wpisano: {values['input_tekst']}")
+
+window.close()
+```
+
+### Elementy GUI w SqueezeIt
+```python
+# Przyciski
+sg.Button("Kompresuj", key="btn_kompresuj")
+
+# Pola tekstowe
+sg.Input(key="input_pliki", size=(40, 1))
+
+# Slider
+sg.Slider(range=(1, 9), default_value=6, key="slider_kompresja")
+
+# Obszar tekstu
+sg.Multiline(key="output_wyniki", size=(60, 8))
+```
+
+---
+
+## Praktyczne przykłady z SqueezeIt
+
+### 1. Klasa KompresorPlikow
+```python
+class KompresorPlikow:
+    def __init__(self, sciezka_docelowa: str, poziom_kompresji: int = 6):
+        self.sciezka_docelowa = sciezka_docelowa
+        self.poziom_kompresji = min(max(poziom_kompresji, 1), 9)
+        self.log_operacji = []
+    
+    def kompresuj_plik(self, sciezka_pliku: str) -> tuple[bool, str, str]:
+        """Kompresuje pojedynczy plik"""
+        try:
+            # Logika kompresji...
+            return True, sciezka_wyniku, "Sukces"
+        except Exception as e:
+            return False, "", f"Błąd: {e}"
+```
+
+### 2. Obsługa zdarzeń GUI
+```python
+def uruchom_aplikacje(self):
+    while True:
+        event, values = self.window.read()
+        
+        if event == sg.WIN_CLOSED:
+            break
+        elif event == "btn_kompresuj":
+            self.obsluz_kompresje(values)
+        elif event == "slider_kompresja":
+            poziom = int(values["slider_kompresja"])
+            self.aktualizuj_poziom_kompresji(poziom)
+```
+
+### 3. Walidacja plików
+```python
+def waliduj_pliki(self, sciezki_plikow: list[str]) -> tuple[list[str], list[str]]:
+    pliki_prawidlowe = []
+    pliki_bledne = []
+    
+    for sciezka in sciezki_plikow:
+        if os.path.exists(sciezka) and os.path.isfile(sciezka):
+            try:
+                with open(sciezka, "rb") as f:
+                    f.read(1)  # Test odczytu
+                pliki_prawidlowe.append(sciezka)
+            except (PermissionError, IOError):
+                pliki_bledne.append(f"{sciezka} - brak uprawnień")
+        else:
+            pliki_bledne.append(f"{sciezka} - plik nie istnieje")
+    
+    return pliki_prawidlowe, pliki_bledne
+```
+
+### 4. Obsługa błędów
+```python
+try:
+    # Niebezpieczny kod
+    wynik = operacja_ktora_moze_sie_nie_powiesc()
+except FileNotFoundError:
+    print("Plik nie został znaleziony")
+except PermissionError:
+    print("Brak uprawnień do pliku")
+except Exception as e:
+    print(f"Nieoczekiwany błąd: {e}")
+finally:
+    print("To się zawsze wykona")
+```
+
+---
+
 ## 🎯 Podsumowanie
 
-### Kluczowe koncepcje:
-1. **Zmienne** - przechowują dane
-2. **Funkcje** - bloki kodu do wielokrotnego użycia
-3. **Klasy** - szablony do tworzenia obiektów
-4. **Pętle** - powtarzanie kodu
-5. **Warunki** - podejmowanie decyzji
-6. **Pliki** - praca z danymi
+### Kluczowe koncepcje w SqueezeIt:
+1. **Klasy** - `KompresorPlikow`, `SqueezeItGUI`
+2. **Funkcje** - `kompresuj_plik()`, `waliduj_pliki()`
+3. **GUI** - FreeSimpleGUI, obsługa zdarzeń
+4. **Obsługa plików** - `open()`, `zipfile`, `os.path`
+5. **Obsługa błędów** - `try/except/finally`
+6. **Moduły** - `main.py`, `gui.py`, `core.py`, `utils.py`
 
 ### Następne kroki:
 - Praktykuj z prostymi programami
 - Eksperymentuj z różnymi typami danych
-- Twórz własne funkcje
+- Twórz własne funkcje i klasy
 - Czytaj dokumentację Python
 
 ### Przydatne zasoby:
 - [Python.org](https://python.org) - oficjalna dokumentacja
 - [Real Python](https://realpython.com) - tutoriale i artykuły
 - [Python Tutor](https://pythontutor.com) - wizualizacja kodu
+- [FreeSimpleGUI Docs](https://pysimplegui.readthedocs.io/) - dokumentacja GUI
 
 **Powodzenia w nauce Pythona! 🚀**
