@@ -11,3 +11,15 @@
 .env.development.local
 .env.test.local
 .env.production.local
+.ruff_cache/
+.vscode/
+.idea/
+.pytest_cache/
+.coverage
+.coverage.*
+.coverage.xml
+.coverage.json
+.coverage.yaml
+.coverage.yml
+.coverage.html
+.coverage.lcov
