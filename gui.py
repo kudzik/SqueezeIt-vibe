@@ -8,10 +8,10 @@ Odpowiedzialny za:
 - Integrację z logiką kompresji
 """
 
-import os
+# import os
 from typing import List, Optional, Tuple
 
-import FreeSimpleGUI as sg
+import FreeSimpleGUI as sg  # noqa: N813
 
 from core import KompresorPlikow, formatuj_rozmiar_pliku, oblicz_oszczednosc
 
@@ -184,7 +184,9 @@ class SqueezeItGUI:
             [sg.Text(f"Poziom kompresji: {statystyki.get('poziom_kompresji', 6)}")],
             [
                 sg.Text(
-                    f"Folder docelowy: {statystyki.get('folder_docelowy', 'Nie ustawiony')}"
+                    f"Folder docelowy: {
+                        statystyki.get('folder_docelowy', 'Nie ustawiony')
+                    }"
                 )
             ],
             [sg.HSeparator()],
@@ -314,7 +316,7 @@ class SqueezeItGUI:
                 self.dodaj_komunikat(komunikat)
 
             # Podsumowanie
-            self.dodaj_komunikat(f"\n📊 Podsumowanie:")
+            self.dodaj_komunikat("\n📊 Podsumowanie:")
             self.dodaj_komunikat(f"✅ Pomyślnie: {sukces} plików")
             self.dodaj_komunikat(f"❌ Błędy: {bledy} plików")
 

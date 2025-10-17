@@ -11,7 +11,8 @@ Odpowiedzialny za:
 import os
 import zipfile
 from datetime import datetime
-from typing import List, Tuple
+
+# from typing import List, Tuple
 
 
 class KompresorPlikow:
@@ -60,7 +61,7 @@ class KompresorPlikow:
                     with open(sciezka, "rb") as f:
                         f.read(1)  # Próba odczytu pierwszego bajtu
                     pliki_prawidlowe.append(sciezka)
-                except (PermissionError, IOError):
+                except (PermissionError, OSError):
                     pliki_bledne.append(f"{sciezka} - brak uprawnień do odczytu")
             else:
                 pliki_bledne.append(f"{sciezka} - plik nie istnieje")

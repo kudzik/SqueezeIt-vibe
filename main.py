@@ -17,7 +17,7 @@ from gui import uruchom_aplikacje
 if __name__ == "__main__":
     """
     Uruchomienie aplikacji SqueezeIt.
-    
+
     Ta funkcja jest wywoływana gdy plik main.py jest uruchamiany
     bezpośrednio (nie jako moduł).
     """
